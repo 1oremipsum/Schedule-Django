@@ -14,6 +14,7 @@ class Category(models.Model):
     def __str__(self) -> str:
         return self.name
 
+
 class Contact(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50, blank=True)
@@ -28,3 +29,4 @@ class Contact(models.Model):
 
     def __str__(self) -> str:
         return f'{self.first_name} {self.last_name}'
+
