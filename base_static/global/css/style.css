@@ -146,9 +146,13 @@
     color: var(--clr-black);
   }
   
-  .table-cel,
+  .table-cel{
+    font-weight: 400;
+  }
+
   .table-header {
     padding: var(--spacing);
+    font-weight: 600;
   }
   
   .table-link {
