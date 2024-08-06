@@ -179,6 +179,11 @@
   .single-contact p {
     margin: 1rem 0;
   }
+
+  .single-contact-name span {
+    font-size: 3rem;
+    font-weight: 300;
+  }
   
   .pagination {
     margin-top: var(--spacing);
