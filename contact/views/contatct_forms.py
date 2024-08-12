@@ -4,12 +4,17 @@ from contact.models import Contact
 from django import forms
 
 class ContactForm(forms.ModelForm):
-    ...
+    class Meta():
+        model = Contact
+        fields = (
+            'first_name', 'last_name', 'phone', 'email',
+        )
 
 
 def create(request):
-    context = {
+    if request.method == 'POST':
+        context = {
+            'form': ContactForm(request.POST)
+        }
 
-    }
-
-    return render(request, 'contact/create.html', context)
+        return render(request, 'contact/create.html', context)
