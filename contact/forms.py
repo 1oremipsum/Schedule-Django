@@ -6,7 +6,7 @@ from typing import Any
 class ContactForm(forms.ModelForm):
     class Meta():
         model = Contact
-        fields = ('first_name', 'last_name', 'phone', 'email',)
+        fields = ('first_name', 'last_name', 'phone', 'email', 'description', 'category')
     
     # More than one field required for validation
     def clean(self) -> dict[str, Any]:
@@ -18,7 +18,7 @@ class ContactForm(forms.ModelForm):
 
         return super().clean()
     
-    
+
     def clean_first_name(self):
         first_name = self.cleaned_data.get('first_name')
 
