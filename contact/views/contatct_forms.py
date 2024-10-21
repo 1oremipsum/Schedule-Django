@@ -4,6 +4,7 @@ from django.urls import reverse
 from contact.forms import ContactForm
 from contact.models import Contact
 
+
 def create(request):
     # Change the form method with: action="{{ form_action }} in create.html"
     form_action = reverse('contact:create')
@@ -53,3 +54,21 @@ def update(request, contact_id):
         }
     
     return render(request, 'contact/create.html', context)
+
+
+def delete(request, contact_id):
+    contact = get_object_or_404(Contact, pk=contact_id, show=True)
+
+    # If the input "confirmation" has no value "yes", then the default value is "no"
+    confirmation = request.POST.get('confirmation', 'no') 
+    if confirmation == 'yes':
+        contact.delete()
+        return redirect('contact:index')
+
+    return render(
+        request, 'contact/contact.html',
+        {
+            'contact': contact,
+            'confirmation': confirmation,
+        }
+    )
