@@ -4,9 +4,19 @@ from django import forms
 from typing import Any
 
 class ContactForm(forms.ModelForm):
+    picture = forms.ImageField(
+        widget=forms.FileInput(
+            attrs={
+                'accept': 'image/*',
+            }
+        )
+    )
+
     class Meta():
         model = Contact
-        fields = ('first_name', 'last_name', 'phone', 'email', 'description', 'category')
+        fields = ('first_name', 'last_name', 
+                  'phone', 'email', 'description', 
+                  'category', 'picture')
     
     # More than one field required for validation
     def clean(self) -> dict[str, Any]:
