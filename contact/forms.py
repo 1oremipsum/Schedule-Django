@@ -1,7 +1,10 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
-from contact.models import Contact
 from django import forms
 from typing import Any
+
+from contact.models import Contact
+
 
 class ContactForm(forms.ModelForm):
     picture = forms.ImageField(
@@ -36,3 +39,7 @@ class ContactForm(forms.ModelForm):
             self.add_error('first_name', ValidationError('First name must be at least 2 characters long', code='invalid'))
 
         return first_name
+    
+
+class RegisterForm(UserCreationForm):
+    pass
